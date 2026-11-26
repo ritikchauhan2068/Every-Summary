@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    environment:
+      SOURCEWISE_DATA: /app/data
+      HF_HOME: /app/data/huggingface
+    volumes:
+      - sourcewise-data:/app/data
+
+volumes:
+  sourcewise-data:

@@ -1,0 +1,9 @@
+Retrieval-augmented generation, or RAG, is a pattern in which an application searches a collection of reference material before asking a language model to answer a question. The retrieved passages are included with the question. This gives the model evidence it can cite and reduces the need for it to rely on information learned during training.
+
+Before searching, the application divides source documents into chunks. Each chunk should retain a location such as a page number, timestamp, or section. Chunks that are too small can lose context, while chunks that are too large can bury the relevant details. A sliding window with a small overlap can preserve context across chunk boundaries.
+
+A lexical retriever scores passages using matching words. A semantic retriever uses numeric embeddings to find related meaning even when the question uses different wording. Hybrid retrieval combines the two signals. A reranker can then examine the highest-scoring candidates more closely, but it adds another call and increases latency.
+
+The answer is only as useful as the evidence the search returns. A trustworthy application should link to the actual passages and say when the material does not answer the question. It should also treat source text as data, because a source can contain instructions that have nothing to do with the reader's question.
+
+When evaluating a RAG application, assess retrieval separately from answer generation. Recall measures how often the search returns the needed evidence. Groundedness measures whether the answer follows from that evidence. Testing with paraphrased questions and questions with no supported answer helps catch failures.
